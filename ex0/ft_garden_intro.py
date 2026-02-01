@@ -8,7 +8,7 @@ This program:
 """
 
 
-    def ft_garden_intro(name: str, height: int, age: int) -> None:
+def ft_garden_intro(name: str, height: int, age: int) -> None:
     """
     Displays the basic information of a plant in the garden.
     """
@@ -32,6 +32,8 @@ if __name__ == "__main__":
 
     # Add data entries
     ft_garden_intro("Rose", 25, 30)
+    ft_garden_intro("Sunflower", 80, 45)
+    ft_garden_intro("Cactus", 15, 120)
 
     # Fixed end of program print
     print("\n --------------------------------------------------------")
