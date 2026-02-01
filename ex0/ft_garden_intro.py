@@ -15,12 +15,16 @@ def display_plant_info(name: str, height: int, age: int) -> None:
     white   = "\033[1;97m"
     reset   = "\033[0m"
 
+    # Start of program print
+    print("\n ============================================================================")
+    print(f" {white}🌱 Welcome to My Garden! 🌱{reset}")
+    print(" ============================================================================")
+    
     # Printing
-    print("Welcome to My Garden")
-    print(f"Plant:  {name}")
-    print(f"Height: {height}cm")
-    print(f"Age:    {age} days")
-    print("End of Program")
+    print(f"{white} Plant:{reset}  {name}")
+    print(f"{white} Height:{reset} {height}cm")
+    print(f"{white} Age:{reset}    {age} days")
+    print(f"\n End of Program")
 
 
 if __name__ == "__main__":
@@ -29,4 +33,5 @@ if __name__ == "__main__":
     plant_height: int = 25
     plant_age: int = 30
 
+    # Function call
     display_plant_info(plant_name, plant_height, plant_age)
