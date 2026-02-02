@@ -14,8 +14,8 @@ def ft_garden_intro(name: str, height: int, age: int) -> None:
     """
     print(f" {name:<13}{f'{height}cm':<13}{f'{age} days':<13}")
 
+
 if __name__ == "__main__":
-    
     # ANSI Color codes
     white = "\033[1;97m"
     reset = "\033[0m"
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     c1 = "Name"
     c2 = "Height"
     c3 = "Age"
-    
+
     # Fixed start of program print
     print(f"\n{white} 🌱 Garden Plant Registry 🌱{reset}\n")
     print(f" {white}{c1:<13}{c2:<13}{c3:<13}{reset}")
