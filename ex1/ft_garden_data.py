@@ -21,7 +21,10 @@ class Plant:
         """
         Displays the basic information of a plant in the garden.
         """
-        print(f" {self.name:<13}{f'{self.height}cm':<13}{f'{self.age} days':<13}")
+        n = self.name
+        h = self.height
+        a = self.age
+        print(f" {n:<13}{f'{h}cm':<13}{f'{a} days':<13}")
 
 
 if __name__ == "__main__":
