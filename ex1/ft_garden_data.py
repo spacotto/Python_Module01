@@ -17,7 +17,7 @@ class Plant:
         # Track initial height for growth reporting
         self.initial_height: int = height
 
-    def display_header(self) -> None;
+    def display_header(self) -> None:
     print(f"\n{white} 🌱 Garden Plant Registry: Day 1 🌱{reset}\n")
     print(f" {white}{c1:<13}{c2:<13}{c3:<13}{reset}")
     print(" --------------------------------------------------------")
