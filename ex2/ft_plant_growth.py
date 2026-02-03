@@ -17,12 +17,7 @@ class Plant:
         # Track initial height for growth reporting
         self.initial_height: int = height
 
-    def display_header(self) -> None:
-    print(f"\n{white} 🌱 Garden Plant Registry: Day 1 🌱{reset}\n")
-    print(f" {white}{c1:<13}{c2:<13}{c3:<13}{reset}")
-    print(" --------------------------------------------------------")
-    
-	def grow(self) -> None:
+    def grow(self) -> None:
         """Increases the plant's height by its unique growth rate."""
         self.height += self.growth
 
@@ -32,25 +27,33 @@ class Plant:
 
     def display_info(self) -> None:
         """Displays the current status of the plant."""
+        diff = self.height - self.initial_height
         h_str: str = f"{self.height}cm"
         a_str: str = f"{self.age} days"
-        print(f" {self.name:<13}{h_str:<13}{a_str:<13}")
-
-    def display_weekly_growth(self) -> None:
-        """Displays the net growth of this specific plant."""
-        diff = self.height - self.initial_height
-        print(f" {self.name:<13} +{diff} cm")
+        g_str: str = f"+{diff} cm"
+        print(f" {self.name:<13}{h_str:<13}{a_str:<13}{g_str:<13}")
 
 
-if __name__ == "__main__":
-    # ANSI Color codes
+def display_header(current_week: int) -> None:
+    """
+    Displays the registry header.
+    """
+    # ANSI Colors
     white = "\033[1;97m"
     reset = "\033[0m"
 
     # Columns titles
-    c1, c2, c3 = "Name", "Height", "Age"
+    c1, c2, c3, c4 = "Name", "Height", "Age", "Growth"
 
-    # Multiple plants constituting the garden 
+    # Prints register header
+    print(f"\n{white} 🌱 Garden Plant Registry: Week {current_week} 🌱{reset}\n")
+    print(f" {white}{c1:<13}{c2:<13}{c3:<13}{c4:<13}{reset}")
+    print(" --------------------------------------------------------")
+
+
+if __name__ == "__main__":
+
+    # Garden plants stored in a list
     garden: list[Plant] = [
         Plant("Rose", 25, 30, 5),
         Plant("Sunflower", 80, 45, 6),
@@ -58,13 +61,17 @@ if __name__ == "__main__":
     ]
 
     # Initial status display
+    current_week = 1
+    display_header(current_week)
     for p in garden:
         p.display_info()
 
     # Simulates growth
-    weeks_to_simulate = 2
-    for current_week in range(1, weeks_to_simulate + 1):
-        # FIX: Loop through each plant to call methods
+    start_week = 2
+    weeks_to_simulate = 4
+    for current_week in range(start_week, weeks_to_simulate + 1):
+        display_header(current_week)
+
         for p in garden:
             p.grow()
             p.aging()
@@ -72,5 +79,4 @@ if __name__ == "__main__":
         for p in garden:
             p.display_info()
 
-        for p in garden:
-            p.display_weekly_growth()
+    print(" ")
