@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module to simulate plant growth and aging in a digital garden.
+Simulate plant growth and aging in a digital garden.
 """
 
 
@@ -8,19 +8,20 @@ class Plant:
     """
     A class representing a plant that can grow and age.
     """
-    def __init__(self, name: str, height: int, age: int) -> None:
+    def __init__(self, name: str, height: int, age: int, growth: int) -> None:
         """
         Initializes the plant with starting values.
         """
         self.name: str = name
         self.height: int = height
         self.age: int = age
+        self.growth: int = growth
 
     def grow(self) -> None:
         """
         Increases the plant's height by a given amount.
         """
-        self.height += 1
+        self.height += self.growth
 
     def aging(self) -> None:
         """
@@ -47,9 +48,9 @@ if __name__ == "__main__":
 
     # Multiple plants as required by Exercise 2
     garden = [
-        Plant("Rose", 25, 30),
-        Plant("Sunflower", 80, 45),
-        Plant("Cactus", 15, 120)
+        Plant("Rose", 25, 30, 1),
+        Plant("Sunflower", 80, 45, 2),
+        Plant("Cactus", 15, 120, 1)
     ]
 
     # Store initial heights to calculate growth later
@@ -61,13 +62,13 @@ if __name__ == "__main__":
     for plant in garden:
         plant.display_info()
 
-    # Simulate 1 week (7 days) of growth
-    for _ in range(7):
+    # Simulate 1 week (7 days) of growth (the starting day is included)
+    for _ in range(6):
         for plant in garden:
             plant.grow()
             plant.aging()
 
-    print(f"\n{white} 🌱 Garden Plant Registry: Day 8 🌱{reset}\n")
+    print(f"\n{white} 🌱 Garden Plant Registry: Day 7 🌱{reset}\n")
     print(f" {white}{c1:<13}{c2:<13}{c3:<13}{reset}")
     print(" --------------------------------------------------------")
     for plant in garden:
@@ -81,5 +82,5 @@ if __name__ == "__main__":
         # Calculate the difference
         growth = plant.height - initial_heights[plant.name]
         print(f" {plant.name:<13} +{growth} cm")
- 
-    print("\n")
+
+    print("")
