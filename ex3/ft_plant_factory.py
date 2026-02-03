@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Implementing an efficient Plant Factory using class initialisation.
+Implement an efficient Plant Factory using class initialisation.
 """
 
 
@@ -77,3 +77,4 @@ if __name__ == "__main__":
 
     # Print total
     display_total(total)
+
