@@ -32,7 +32,11 @@ This module provides a structured pedagogical path that transitions students fro
 * **Factory Pattern Logic**: The concept of streamlining object creation to handle large volumes of data efficiently without repetitive manual assignments.
 
 ### Exercise 4: Garden Security System
-
+* **Encapsulation**: The practice of bundling data and the methods that operate on that data into a single unit (the class) and restricting direct access to some of the object's components.
+* **Access Modifiers (Internal Naming)**: Using a single underscore prefix (e.g., `_height`) as a convention to signal that an attribute is "protected" or intended for internal use only.
+* **Getters and Setters**: Methods used to safely retrieve (`get`) and modify (`set`) the values of private/protected attributes, providing a layer of abstraction between the user and the data.
+* **Data Validation**: Logic embedded within setter methods to ensure that only "clean" or "valid" data is stored, protecting the system from logical errors like negative physical dimensions.
+* **Fail-Safe Design**: Programming the system to handle incorrect input by reporting an error (e.g., printing a rejection message) rather than crashing or allowing the state to become inconsistent.
 
 ### Exercise 5: Specialised Plant Types
 
