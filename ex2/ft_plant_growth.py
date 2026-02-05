@@ -35,7 +35,7 @@ class Plant:
 
     def display_info(self) -> None:
         """Displays the current status of the plant."""
-        print(get_info())
+        print(self.get_info())
 
 
 def display_header(current_week: int) -> None:
@@ -56,7 +56,9 @@ def display_header(current_week: int) -> None:
 
 
 def main() -> None:
-    """Simulates a week of growth for the garden."""
+    """
+    Simulates {weeks_to_simulate} of growth for the garden.
+    """
     # Garden plants stored in a list
     garden: list[Plant] = [
         Plant("Rose", 25, 30, 5),
@@ -79,12 +81,11 @@ def main() -> None:
         for p in garden:
             p.grow()
             p.aging()
-
-        for p in garden:
+            p.get_info()
             p.display_info()
 
     print(" ")
 
 
 if __name__ == "__main__":
-    main()    
+    main()
