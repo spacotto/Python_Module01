@@ -12,7 +12,11 @@ This module provides a structured pedagogical path that transitions students fro
 * **Standard Output**: Utilizing the `print()` function to present formatted data to the user.
 
 ### Exercise 1: Garden Data Organiser
-
+* **Classes as Blueprints**: Using the `class` keyword to define a template that represents real-world objects, allowing for the creation of multiple distinct instances with the same structure.
+* **The `__init__` Method**: A special Python method (**constructor**) used to initialize an object's state by assigning values to its attributes when the object is created.
+* **Instance Attributes**: Variables prefixed with `self` that belong to a specific instance of a class, ensuring each plant has its own unique data (e.g., its own height and age).
+* **PascalCase vs. snake_case**: Adhering to Python naming conventions where classes use `PascalCase` and functions/variables use `snake_case` for professional readability.
+* **Collection Management**: Using data structures like lists to store and iterate over multiple class instances efficiently.
 
 ### Exercise 2: Plant Growth Simulator
 
