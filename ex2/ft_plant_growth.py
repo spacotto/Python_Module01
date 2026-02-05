@@ -25,13 +25,17 @@ class Plant:
         """Increases the plant's age by 7 days (one week)."""
         self.age += 7
 
-    def display_info(self) -> None:
-        """Displays the current status of the plant."""
+    def get_info(self) -> str:
+        """Returns a formatted string of the plant's current status."""
         diff = self.height - self.initial_height
         h_str: str = f"{self.height}cm"
         a_str: str = f"{self.age} days"
         g_str: str = f"+{diff} cm"
-        print(f" {self.name:<13}{h_str:<13}{a_str:<13}{g_str:<13}")
+        return f" {self.name:<13}{h_str:<13}{a_str:<13}{g_str:<13}"
+
+    def display_info(self) -> None:
+        """Displays the current status of the plant."""
+        print(get_info())
 
 
 def display_header(current_week: int) -> None:
@@ -51,8 +55,8 @@ def display_header(current_week: int) -> None:
     print(" --------------------------------------------------------")
 
 
-if __name__ == "__main__":
-
+def main() -> None:
+    """Simulates a week of growth for the garden."""
     # Garden plants stored in a list
     garden: list[Plant] = [
         Plant("Rose", 25, 30, 5),
@@ -80,3 +84,7 @@ if __name__ == "__main__":
             p.display_info()
 
     print(" ")
+
+
+if __name__ == "__main__":
+    main()    
