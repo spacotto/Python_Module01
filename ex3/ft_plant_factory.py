@@ -80,5 +80,6 @@ def main() -> None:
     # Print total
     display_total(total)
 
+
 if __name__ == "__main__":
     main()
