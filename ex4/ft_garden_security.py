@@ -45,7 +45,7 @@ class SecurePlant:
 
     def set_age(self, value: int) -> None:
         """
-        Controlled way to modify age with validation, returning status string.
+        Controlled way to modify age with validation.
         """
         magenta = "\033[1;95m"
         cyan = "\033[1;96m"
