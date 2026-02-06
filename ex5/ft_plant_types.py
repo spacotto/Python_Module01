@@ -1,82 +1,71 @@
 #!/usr/bin/env python3
 """
-Implementing Inheritance for specialized plant types.
+Implement Inheritance for specialized plant types.
 """
 
+
 class Plant:
-    """Base class for all plants in the garden."""
+    """Base class for all garden plants."""
     def __init__(self, name: str, height: int, age: int) -> None:
         """Initializes common plant features."""
         self.name: str = name
         self.height: int = height
         self.age: int = age
 
-    def display_base(self) -> str:
-        """Returns a string with basic plant info."""
-        return f"{self.name}: {self.height}cm, {self.age} days"
-
 
 class Flower(Plant):
-    """Specialized plant type that can bloom."""
+    """Specialized plant that can bloom."""
     def __init__(self, name: str, height: int, age: int, color: str) -> None:
-        # Requirement: Call the parent setup with super().__init__()
+        """Uses super() to initialize common attributes and adds color."""
         super().__init__(name, height, age)
         self.color: str = color
 
     def bloom(self) -> None:
-        """Unique behavior for Flowers."""
-        print(f"{self.name} is blooming beautifully in {self.color}!")
+        """Displays a blooming message."""
+        print(f"{self.name} is blooming beautifully!")
 
 
 class Tree(Plant):
-    """Specialized plant type that provides shade."""
+    """Specialized plant that provides shade."""
     def __init__(self, name: str, height: int, age: int, diameter: int) -> None:
+        """Adds trunk_diameter to the base plant."""
         super().__init__(name, height, age)
         self.trunk_diameter: int = diameter
 
     def produce_shade(self) -> None:
-        """Unique behavior for Trees."""
-        shade_area = self.height * self.trunk_diameter // 100
-        print(f"{self.name} provides {shade_area} square meters of shade.")
+        """Calculates and displays shade area."""
+        shade_area = self.trunk_diameter * 1.5  # Simple simulation logic
+        print(f"{self.name} provides {shade_area} square meters of shade")
 
 
 class Vegetable(Plant):
-    """Specialized plant type with nutritional value."""
-    def __init__(self, name: str, height: int, age: int, season: str, vitamins: str) -> None:
-        super().__init__(name, height, age)
+    """Specialized plant for harvesting."""
+    def __init__(self, name: str, h: int, a: int, season: str, vit: str) -> None:
+        """Adds harvest season and nutritional value."""
+        super().__init__(name, h, a)
         self.harvest_season: str = season
-        self.nutritional_value: str = vitamins
+        self.nutritional_value: str = vit
 
-    def describe_nutrition(self) -> None:
-        """Unique behavior for Vegetables."""
-        print(f"{self.name} is harvested in {self.harvest_season} and is rich in {self.nutritional_value}.")
+    def harvest_info(self) -> None:
+        """Displays nutritional information."""
+        print(f"{self.name} is rich in {self.nutritional_value}")
 
 
 def main() -> None:
-    print("=== Garden Plant Types ===\n")
+    """Creates instances of specialized plants and triggers behaviors."""
+    print("=== Garden Plant Types ===")
+    
+    rose = Flower("Rose", 25, 30, "red")
+    print(f"{rose.name} (Flower): {rose.height}cm, {rose.age} days, {rose.color} color")
+    rose.bloom()
 
-    # Requirement: Create at least 2 instances of each plant type
-    garden: list[Plant] = [
-        Flower("Rose", 25, 30, "red"),
-        Flower("Tulip", 15, 10, "yellow"),
-        Tree("Oak", 500, 1825, 50),
-        Tree("Pine", 300, 1000, 30),
-        Vegetable("Tomato", 80, 90, "summer", "vitamin C"),
-        Vegetable("Carrot", 20, 60, "autumn", "vitamin A")
-    ]
+    oak = Tree("Oak", 500, 1825, 50)
+    print(f"{oak.name} (Tree): {oak.height}cm, {oak.age} days, {oak.trunk_diameter}cm diameter")
+    oak.produce_shade()
 
-    for p in garden:
-        # Display common base info
-        print(f"{p.display_base()}")
-        
-        # Check specific type to call unique behaviors
-        if isinstance(p, Flower):
-            p.bloom()
-        elif isinstance(p, Tree):
-            p.produce_shade()
-        elif isinstance(p, Vegetable):
-            p.describe_nutrition()
-        print("-" * 30)
+    tomato = Vegetable("Tomato", 80, 90, "summer", "vitamin C")
+    print(f"{tomato.name} (Vegetable): {tomato.height}cm, {tomato.age} days, {tomato.harvest_season} harvest")
+    tomato.harvest_info()
 
 
 if __name__ == "__main__":
