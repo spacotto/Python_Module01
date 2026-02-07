@@ -67,13 +67,13 @@ def main() -> None:
     ]
 
     # Initial status display
-    current_week = 1
+    current_week = 0
     display_header(current_week)
     for p in garden:
         p.display_info()
 
     # Simulates growth
-    start_week = 2
+    start_week = 1
     weeks_to_simulate = 4
     for current_week in range(start_week, weeks_to_simulate + 1):
         display_header(current_week)
