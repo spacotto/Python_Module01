@@ -46,3 +46,8 @@ This module provides a structured pedagogical path that transitions students fro
 * **DRY Principle (Don't Repeat Yourself)**: Using inheritance to avoid duplicating common code (like name/height initialization) across multiple related classes.
 
 ### Exercise 6: Garden Analytics Platform
+* **Nested Classes (Inner Classes)**: Defining a class inside another class (e.g., `GardenStats` inside `Garden`) to logically group helper utilities that are specifically relevant to the outer class.
+* **Class Methods (`@classmethod`)**: Methods that receive the class itself (`cls`) as the first argument instead of an instance. These are used for logic that affects the entire class, such as tracking the total number of `Garden` objects created.
+* **Static Methods (`@staticmethod`)**: Methods that do not require access to instance or class data. They behave like regular functions but are placed inside a class because they belong to its namespace (e.g., a growth calculator).
+* **Class Attributes**: Variables shared across all instances of a class (like `total_gardens_created`), allowing the system to maintain a global state.
+* **Complex System Integration**: Combining various OOP principles—Inheritance, Encapsulation, and Polymorphism—to build a multi-layered application where different objects interact harmoniously.
