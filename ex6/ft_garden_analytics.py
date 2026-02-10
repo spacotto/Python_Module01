@@ -5,14 +5,14 @@ Building a comprehensive Garden Analytics Platform.
 
 class Plant:
     """Base class for the plant family tree."""
-    def __init__(self, name: str, height: int):
+    def __init__(self, name: str, age: int):
         self.name: str = name
-        self.height: int = height
+        self.age: int = age
 
     def grow(self) -> None:
-        """Instance method to increase height."""
-        self.height += 1
-        print(f"{self.name} grew 1cm")
+        """Instance method to increase age by 1 day."""
+        self.age += 1
+        print(f"{self.name} is 1 day older!")
 
 
 class FloweringPlant(Plant):
@@ -70,7 +70,7 @@ class GardenManager:
         print(f"\n=== {self.owner}'s Garden Report ===")
         print(f"Plants in garden: {len(self.plants)}")
         for p in self.plants:
-            status = f"- {p.name}: {p.height}cm"
+            status = f"- {p.name}: {p.age}cm"
             if isinstance(p, FloweringPlant):
                 status += f", {p.color} flowers"
             if isinstance(p, PrizeFlower):
