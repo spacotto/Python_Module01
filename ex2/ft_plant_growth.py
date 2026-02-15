@@ -31,7 +31,7 @@ class Plant:
         h_str: str = f"{self.height}cm"
         a_str: str = f"{self.age} days"
         g_str: str = f"+{diff} cm"
-        return f" {self.name:<13}{h_str:<13}{a_str:<13}{g_str:<13}"
+        return f" {self.name:<15}{h_str:<15}{a_str:<15}{g_str:<15}"
 
     def display_info(self) -> None:
         """Displays the current status of the plant."""
@@ -42,37 +42,35 @@ def display_header(current_week: int) -> None:
     """
     Displays the registry header.
     """
-    # ANSI Colors
     white = "\033[1;97m"
     reset = "\033[0m"
 
-    # Columns titles
+    """Columns titles"""
     c1, c2, c3, c4 = "Name", "Height", "Age", "Growth"
 
-    # Prints register header
+    """Prints register header"""
     print(f"\n{white} 🌱 Garden Plant Registry: Week {current_week} 🌱{reset}\n")
-    print(f" {white}{c1:<13}{c2:<13}{c3:<13}{c4:<13}{reset}")
-    print(" --------------------------------------------------------")
+    print(f" {white}{c1:<15}{c2:<15}{c3:<15}{c4:<15}{reset}")
+    print(" " + "-" * 60)
 
 
 def main() -> None:
     """
     Simulates {weeks_to_simulate} of growth for the garden.
     """
-    # Garden plants stored in a list
     garden: list[Plant] = [
         Plant("Rose", 25, 30, 5),
         Plant("Sunflower", 80, 45, 6),
         Plant("Cactus", 15, 120, 2)
     ]
 
-    # Initial status display
+    """Initial status display"""
     current_week = 0
     display_header(current_week)
     for p in garden:
         p.display_info()
 
-    # Simulates growth
+    """Simulates growth"""
     start_week = 1
     weeks_to_simulate = 4
     for current_week in range(start_week, weeks_to_simulate + 1):
