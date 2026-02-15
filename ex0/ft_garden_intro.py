@@ -26,6 +26,7 @@ def display_header() -> None:
     print(f" {white}{c1:<20}{c2:<20}{c3:<20}{reset}")
     print(" " + "-" * 60)
 
+
 def main() -> None:
     """Print header"""
     display_header()
