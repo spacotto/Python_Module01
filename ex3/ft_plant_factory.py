@@ -5,79 +5,62 @@ Implement an efficient Plant Factory using class initialisation.
 
 
 class Plant:
-    """
-    A class representing a plant.
-    """
     def __init__(self, name: str, height: int, age: int) -> None:
-        """
-        Initialises the plant with starting values.
-        """
-        self.name: str = name
-        self.height: int = height
-        self.age: int = age
+        """Initialises the plant with starting values."""
+        self.name = name
+        self.height = height
+        self.age = age
 
-    def __str__(self) -> str:
-        """
-        Returns a formatted string representing the plant.
-        """
-        h_str: str = f"{self.height}cm"
-        a_str: str = f"{self.age} days"
-        return f" {self.name:<13}{h_str:<13}{a_str:<13}"
+    def display_info(self) -> None:
+        """Displays the current status of the plant instance."""
+        print(f" {self.name:<20}"
+              f"{f"{self.height}cm":<20}"
+              f"{f"{self.age} days":<20}")
 
 
 def display_header() -> None:
     """
     Displays the factory output header.
     """
-    # ANSI Colors
     white = "\033[1;97m"
     reset = "\033[0m"
-
-    # Columns titles
+    """Columns titles"""
     c1, c2, c3 = "Name", "Height", "Age"
-
-    # Prints register header
-    print(f"\n{white} 🌱 Plant Factory: List of Plants Created 🌱{reset}\n")
-    print(f" {white}{c1:<13}{c2:<13}{c3:<13}{reset}")
-    print(" --------------------------------------------------------")
+    """Prints register header"""
+    print(f"\n{white} 🌱 Plant Factory 🌱{reset}\n")
+    print(f" {white}{c1:<20}{c2:<20}{c3:<20}{reset}")
+    print(" " + "-" * 60)
 
 
 def display_total(total: int) -> None:
     """
     Displays the total amount of created plants
     """
-    # ANSI Colors
     white = "\033[1;97m"
     reset = "\033[0m"
 
-    print(f"\n{white} 🌱 Total plants created{reset}: {total}\n")
+    print(f"{white} 🌱 Total plants created{reset}: {total}\n")
 
 
 def main() -> None:
-    """
-    Simulates the creation of a batch of plants
-    """
-    # List of plants to create
-    factory_batch: list[Plant] = [
-        Plant("Rose", 25, 30),
-        Plant("Oak", 200, 365),
-        Plant("Cactus", 5, 90),
-        Plant("Sunflower", 80, 45),
-        Plant("Fern", 15, 120)
+    """"Garden Center inventory"""
+    batch = [
+        ["Rose", 25, 30],
+        ["Oak", 200, 365],
+        ["Cactus", 5, 90],
+        ["Sunflower", 80, 45],
+        ["Fern", 15, 120]
     ]
 
-    # Init total
-    total = 0
-
-    # Print header
     display_header()
-
-    # Iterate through the batch to display them
-    for p in factory_batch:
-        print(p)
+    total = 0
+    for data in batch:
+        """Streamlined Creation"""
+        p = Plant(data[0], data[1], data[2])
+        Plant.display_info(p)
         total += 1
 
-    # Print total
+    print(" " + "-" * 60)
     display_total(total)
 
 
