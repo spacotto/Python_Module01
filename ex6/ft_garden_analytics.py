@@ -260,6 +260,8 @@ class GardenManager:
                 count += 1
             return count
 
+        count_gardens = staticmethod(count_gardens)
+
 
 def main():
     title = GardenManager.bold_str(" 🌱 Garden Management System Demo 🌱")
