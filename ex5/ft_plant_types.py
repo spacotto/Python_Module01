@@ -8,9 +8,17 @@ class Plant:
     """Base class for all garden plants."""
     def __init__(self, name: str, height: int, age: int) -> None:
         """Initialises common plant features."""
+        self.type: str = "Plant"
         self.name: str = name
         self.height: int = height
         self.age: int = age
+
+    def display_details(self) -> None:
+        """Base display for common attributes."""
+        white, reset = "\033[1;97m", "\033[0m"
+        print(f"\n {white}{'Name':<20}{reset}{self.name} ({self.type})")
+        print(f" {white}{'Height':<20}{reset}{self.height}cm")
+        print(f" {white}{'Age':<20}{reset}{self.age} days")
 
 
 class Flower(Plant):
@@ -24,6 +32,12 @@ class Flower(Plant):
     def bloom(self) -> None:
         """Displays a blooming message."""
         print(f"\n 🌱 {self.name} is blooming beautifully!")
+
+    def display_details(self) -> None:
+        white, reset = "\033[1;97m", "\033[0m"
+        super().display_details()
+        print(f" {white}{'Color':<20}{reset}{self.color}")
+        self.bloom()
 
 
 class Tree(Plant):
@@ -40,6 +54,12 @@ class Tree(Plant):
         shade_area = self.trunk_diameter * 1.5
         print(f"\n 🌱 {self.name} provides {shade_area} square meters of shade")
 
+    def display_details(self) -> None:
+        white, reset = "\033[1;97m", "\033[0m"
+        super().display_details()
+        print(f" {white}{'Diameter':<20}{reset}{self.trunk_diameter}cm")
+        self.produce_shade()
+
 
 class Vegetable(Plant):
     """Specialised plant for harvesting."""
@@ -55,80 +75,48 @@ class Vegetable(Plant):
         """Displays nutritional information."""
         print(f"\n 🌱 {self.name} is rich in {self.nutritional_value}")
 
+    def display_details(self) -> None:
+        white, reset = "\033[1;97m", "\033[0m"
+        super().display_details()
+        print(f" {white}{'Harvest Season':<20}{reset}{self.harvest_season}")
+        print(f" {white}{'Nutritional Value':<20}{reset}"
+              f"{self.nutritional_value}")
+        self.harvest_info()
+
+
+def status_helper(plant_object: Plant) -> None:
+    """Uses polymorphism to display any plant's status."""
+    plant_object.display_details()
+    print("\n " + "-" * 50)
+
 
 def main() -> None:
     """Colors"""
     white = "\033[1;97m"
     reset = "\033[0m"
 
-    """Titles"""
-    f1 = "Name"
-    f2 = "Height"
-    f3 = "Age"
-    f4 = "Color"
-    f5 = "Diameter"
-    f6 = "Harvest Season"
-    f7 = "Nutritional Value"
-
     """Printing"""
     print(f"\n {white}🌱 Garden Plant Types{reset}")
-    print(" --------------------------------------------------------\n")
+    print(" " + "-" * 50)
 
     rose = Flower("Rose", 25, 30, "Red")
-    print(f" {white}{f1:<20}{reset}{rose.name} ({rose.type})")
-    print(f" {white}{f2:<20}{reset}{rose.height}cm")
-    print(f" {white}{f3:<20}{reset}{rose.age} days")
-    print(f" {white}{f4:<20}{reset}{rose.color}")
-    rose.bloom()
-
-    print("\n --------------------------------------------------------\n")
+    status_helper(rose)
 
     sunflower = Flower("Sunflower", 80, 45, "Yellow")
-    print(f" {white}{f1:<20}{reset}{sunflower.name} ({sunflower.type})")
-    print(f" {white}{f2:<20}{reset}{sunflower.height}cm")
-    print(f" {white}{f3:<20}{reset}{sunflower.age} days")
-    print(f" {white}{f4:<20}{reset}{sunflower.color}")
-    sunflower.bloom()
-
-    print("\n --------------------------------------------------------\n")
+    status_helper(sunflower)
 
     oak = Tree("Oak", 500, 1825, 50)
-    print(f" {white}{f1:<20}{reset}{oak.name} ({oak.type})")
-    print(f" {white}{f2:<20}{reset}{oak.height}cm")
-    print(f" {white}{f3:<20}{reset}{oak.age} days")
-    print(f" {white}{f5:<20}{reset}{oak.trunk_diameter}")
-    oak.produce_shade()
-
-    print("\n --------------------------------------------------------\n")
+    status_helper(oak)
 
     bonsai = Tree("Bonsai", 15, 3650, 5)
-    print(f" {white}{f1:<20}{reset}{bonsai.name} ({bonsai.type})")
-    print(f" {white}{f2:<20}{reset}{bonsai.height}cm")
-    print(f" {white}{f3:<20}{reset}{bonsai.age} days")
-    print(f" {white}{f5:<20}{reset}{bonsai.trunk_diameter}")
-    bonsai.produce_shade()
-
-    print("\n --------------------------------------------------------\n")
+    status_helper(bonsai)
 
     tomato = Vegetable("Tomato", 80, 90, "Summer", "Vitamin C")
-    print(f" {white}{f1:<20}{reset}{tomato.name} ({tomato.type})")
-    print(f" {white}{f2:<20}{reset}{tomato.height}cm")
-    print(f" {white}{f3:<20}{reset}{tomato.age} days")
-    print(f" {white}{f6:<20}{reset}{tomato.harvest_season}")
-    print(f" {white}{f7:<20}{reset}{tomato.nutritional_value}")
-    tomato.harvest_info()
-
-    print("\n --------------------------------------------------------\n")
+    status_helper(tomato)
 
     carrot = Vegetable("Carrot", 20, 70, "Autumn", "Vitamin A")
-    print(f" {white}{f1:<20}{reset}{carrot.name} ({carrot.type})")
-    print(f" {white}{f2:<20}{reset}{carrot.height}cm")
-    print(f" {white}{f3:<20}{reset}{carrot.age} days")
-    print(f" {white}{f6:<20}{reset}{carrot.harvest_season}")
-    print(f" {white}{f7:<20}{reset}{carrot.nutritional_value}")
-    carrot.harvest_info()
+    status_helper(carrot)
 
-    print("\n --------------------------------------------------------")
     print(f" {white}🌱 End of Garden Plant Types List{reset}\n")
 
 
